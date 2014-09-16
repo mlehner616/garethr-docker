@@ -71,10 +71,11 @@ class docker::install {
       }
     }
     'RedHat': {
-      if versioncmp($::operatingsystemrelease, '6.5') < 0 {
-        fail('Docker needs RedHat/CentOS version to be at least 6.5.')
+      if  versioncmp($::operatingsystemrelease, '6.5') < 0 or
+          ($::operatingsystem == 'Amazon' and versioncmp($::operatingsystemmajrelease, '3') < 0) {
+            fail('Docker needs RedHat/CentOS version to be at least 6.5 or Amazon Linux to be at least 3.10.42-52.145.amzn1.x86_64.')
       }
-
+      
       $manage_kernel = false
 
       if $docker::version {
