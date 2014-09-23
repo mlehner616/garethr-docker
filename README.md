@@ -159,7 +159,7 @@ docker::run { 'helloworld':
 
 Ports, expose, env, dns and volumes can be set with either a single string or as above with an array of values.
 
-To use an image tag just append the tag name to the image name separated by a semicolon:
+To use an image tag just append the tag name to the image name separated by a colon:
 
 ```puppet
 docker::run { 'helloworld':
